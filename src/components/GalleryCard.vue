@@ -1,6 +1,12 @@
 <template>
+
+  <select v-model="itemSortType">
+    <option value="AZname">A -> Z</option>
+    <option value="ZAname">Z -> A</option>
+  </select>
+
   <div class="gallery-card">
-    <div v-for="item in item_data" :key="item.id">
+    <div v-for="item in itemOrganizedData" :key="item.id">
       <ItemCard :item_name="item.name" 
       :item_image_adress="item.image"
       :item_description="item.description"/>
@@ -23,7 +29,9 @@ export default {
   
   data() {
     return {
-      item_data: []
+      item_data: [],
+      search: "",
+      itemSortType : "AZname"
     }
   },
 
@@ -31,6 +39,19 @@ export default {
     function(){
       this.retrieve_item_data();
     },
+
+  
+  computed:{
+    itemOrganizedData: function(){      
+      const comparator_type =  this.itemSortType =="AZname" ? 
+                                          (a,b)=>a.name.localeCompare(b.name):
+                                          (a,b)=>b.name.localeCompare(a.name);
+
+      let organized_data =this.item_data; 
+      return organized_data.sort(comparator_type);
+    }
+  }
+  ,
 
   methods: {
     async retrieve_item_data(){
