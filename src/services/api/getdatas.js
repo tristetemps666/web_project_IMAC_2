@@ -1,5 +1,5 @@
-const get_item_informations= async function(){
-    const url = "https://eldenring.fanapis.com/api/items?limit=20";
+const get_item_informations= async function(category,number_of_items){
+    const url = "https://eldenring.fanapis.com/api/"+ category+"?limit="+number_of_items;
     const response = await fetch(url)
     if(response.status == 200){
         const response_data = await response.json();

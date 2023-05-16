@@ -38,6 +38,8 @@ h2 {
   width: 20vw;
   text-align: center;
   font-size: 1.8vw;
+  font-family: "Elden font";
+
 }
 .description-title{
   text-align: left;
@@ -54,13 +56,13 @@ h2 {
 }
 
 .item-card{
-  position: center;
-  border: solid;
+  border: solid 1vw;
   width: 25vw;
   height: 35vw;
   margin: 2vw;
   margin-bottom: 5vw;
-  background-color: brown;
+  background-color: #232f3d;
+  border-color: #ebe4b8;
   border-radius: 2vw;
 
 }
