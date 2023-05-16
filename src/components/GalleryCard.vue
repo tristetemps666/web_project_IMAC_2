@@ -48,9 +48,9 @@ export default {
     return {
       item_data: [],
       search: "",
-      itemSortType: "AZname",
-      category: "items",
-      numberOfItem: 20,
+      itemSortType: sessionStorage.getItem("itemSortType") || "AZname",
+      category: sessionStorage.getItem("category") || "items",
+      numberOfItem: sessionStorage.getItem("numberOfItem") || 20
     };
   },
 
@@ -82,11 +82,16 @@ export default {
   watch: {
     category() {
       this.retrieve_item_data();
+      sessionStorage.setItem("category",this.category);
     },
     numberOfItem() {
       this.retrieve_item_data();
+      sessionStorage.setItem("numberOfItem",this.numberOfItem);
     },
-  },
+    itemSortType(){
+      sessionStorage.setItem("itemSortType",this.itemSortType);
+    }
+  },  
 };
 </script>
 
