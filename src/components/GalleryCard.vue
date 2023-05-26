@@ -1,4 +1,12 @@
 <template>
+  <label for="Search"> Search</label>
+  <input
+    name="Search"
+    v-model="search"
+    class="drop-down"
+    type="text"
+  />
+
   <select v-model="itemSortType" class="drop-down">
     <option value="AZname">A -> Z</option>
     <option value="ZAname">Z -> A</option>
@@ -50,7 +58,7 @@ export default {
       search: "",
       itemSortType: sessionStorage.getItem("itemSortType") || "AZname",
       category: sessionStorage.getItem("category") || "items",
-      numberOfItem: sessionStorage.getItem("numberOfItem") || 20
+      numberOfItem: sessionStorage.getItem("numberOfItem") || 20,
     };
   },
 
@@ -60,12 +68,15 @@ export default {
 
   computed: {
     itemOrganizedData: function () {
+      const filterFunc = (a) =>
+        a.name.toLowerCase().includes(this.search.toLowerCase());
+      let organized_data = this.item_data.filter(filterFunc);
+
       const comparator_type =
         this.itemSortType == "AZname"
           ? (a, b) => a.name.localeCompare(b.name)
           : (a, b) => b.name.localeCompare(a.name);
 
-      let organized_data = this.item_data;
       return organized_data.sort(comparator_type);
     },
   },
@@ -82,16 +93,19 @@ export default {
   watch: {
     category() {
       this.retrieve_item_data();
-      sessionStorage.setItem("category",this.category);
+      sessionStorage.setItem("category", this.category);
     },
     numberOfItem() {
       this.retrieve_item_data();
-      sessionStorage.setItem("numberOfItem",this.numberOfItem);
+      sessionStorage.setItem("numberOfItem", this.numberOfItem);
     },
-    itemSortType(){
-      sessionStorage.setItem("itemSortType",this.itemSortType);
+    itemSortType() {
+      sessionStorage.setItem("itemSortType", this.itemSortType);
+    },
+    search(){
+      sessionStorage.setItem("search", this.search);
     }
-  },  
+  },
 };
 </script>
 

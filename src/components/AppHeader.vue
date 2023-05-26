@@ -1,8 +1,7 @@
 <template>
   <header>
     <h1>
-      Invetaire du jeu Japononais sur le Cercle DE L Elden (pas l'edorado non
-      elden)
+      Inventaire de Elden Ring
     </h1>
 
     <img class="banner" src="../assets/banner_jeu.png">
