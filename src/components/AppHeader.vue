@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1>
-      Inventaire de Elden Ring
+      Elden Ring Inventory
     </h1>
 
     <img class="banner" src="../assets/banner_jeu.png">

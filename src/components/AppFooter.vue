@@ -1,7 +1,7 @@
 <template>
   <footer>
     <h3>
-      foin du site
+      Made by Tristan DEBEAUNE
     </h3>
     <br/>
     <a href="#">revenir en haut</a>
